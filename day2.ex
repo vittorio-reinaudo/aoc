@@ -21,18 +21,6 @@ defmodule AdventOfCode.Day2 do
       |> Enum.sum()
 
     {r1, r2}
-
-    # PART 1
-    # {_final, count_exact_zero} =
-
-    # PART 2
-    # {_final, count_zero_pass} =
-    #   Enum.reduce(rotations, {50, 0}, fn rotation, {curr_position, zero_count} ->
-    #     {count, pos} = get_next_position_and_count(curr_position, rotation)
-    #     {pos, zero_count + count}
-    #   end)
-
-    # %{count_exact_zero: count_exact_zero, count_zero_pass: count_zero_pass}
   end
 
   defp is_invalid?(integer) do
@@ -42,6 +30,9 @@ defmodule AdventOfCode.Day2 do
     String.split_at(string, div(len, 2))
     |> check_sequence()
   end
+
+  defp check_sequence({h, t}) when h == t, do: true
+  defp check_sequence(_), do: false
 
   defp is_invalid2?(integer) do
     string = to_string(integer)
@@ -58,9 +49,6 @@ defmodule AdventOfCode.Day2 do
       false
     end
   end
-
-  defp check_sequence({h, t}) when h == t, do: true
-  defp check_sequence(_), do: false
 
   ##################################################################################################################################
   ##################################################################################################################################
