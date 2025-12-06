@@ -35,11 +35,11 @@ defmodule AdventOfCode.Day6 do
     |> Stream.map(&Tuple.to_list/1)
     |> Stream.chunk_by(fn r -> Enum.all?(r, &(&1 == " ")) end)
     |> Stream.reject(fn list -> Enum.at(list, 0) |> Enum.all?(&(&1 == " ")) end)
-    |> Stream.map(&merge_charlists/1)
+    |> Stream.map(&merge_char_matrix/1)
     |> Enum.reduce(0, fn {op, numbers}, acc -> resolve(op, numbers, acc) end)
   end
 
-  defp merge_charlists(charlists) do
+  defp merge_char_matrix(charlists) do
     [op] = Enum.at(charlists, 0) |> Enum.split(-1) |> elem(1)
 
     numbers =
